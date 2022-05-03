@@ -18,6 +18,11 @@ final class LoginView: UIView {
 //        self.manager = manager
 //    }
     
+    weak var coordinator: AppCoordinator?
+    
+    @objc private func goToRegister() {
+        coordinator?.goToRegister()
+    }
     
     
     override init(frame: CGRect) {
@@ -59,7 +64,7 @@ final class LoginView: UIView {
     
     private(set) lazy var loginButton: UIButton = {
         let button = UIButton()
-//        button.addTarget(self, action: #selector(manager?.singUp), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goToRegister), for: .touchUpInside)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(red: 0.23, green: 0.3, blue: 0.8, alpha: 0.8)
         button.layer.cornerRadius = 16

@@ -10,16 +10,29 @@ import UIKit
 
 class AppCoordinator: Coordinator {
     var parentCoordinator: Coordinator?
-    var childCoordinator: [Coordinator]
+    var childCoordinator: [Coordinator] = []
     var navigation: UINavigationController
     
     
-    init(navigation: UINavigationController) {
+    init(navigation: UINavigationController, parentCoordinator: Coordinator) {
         self.navigation = navigation
+        self.parentCoordinator = parentCoordinator
     }
     
     func start() {
-        <#code#>
+        goToRegister()
+    }
+    
+    func goToRegister() {
+        let vc = RegisterViewControlle()
+        let loginView = RegistrationView()
+        loginView.coordinator = self
+        vc.registerView = loginView
+        navigation.pushViewController(vc, animated: true)
+        
+        
+        
+        
     }
     
     

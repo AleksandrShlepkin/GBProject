@@ -11,6 +11,8 @@ import SnapKit
 
 final class RegistrationView: UIView {
     
+    weak var coordinator: AppCoordinator?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

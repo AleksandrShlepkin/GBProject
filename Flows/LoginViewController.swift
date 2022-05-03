@@ -11,11 +11,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private var loginview: LoginView {
-        return self.view as! LoginView
-    }
-    
-    
+    var loginView: LoginView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -23,7 +20,6 @@ class LoginViewController: UIViewController {
     }
     
     override func loadView() {
-        self.view = LoginView()
     }
     
 

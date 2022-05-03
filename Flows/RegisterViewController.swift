@@ -10,16 +10,14 @@ import UIKit
 
 class RegisterViewControlle: UIViewController {
     
+    var registerView: RegistrationView?
     
-    private var register: RegistrationView {
-        return self.view as! RegistrationView
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func loadView() {
-        self.view = RegistrationView()
     }
 }
