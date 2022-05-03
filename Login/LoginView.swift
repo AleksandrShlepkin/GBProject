@@ -11,7 +11,13 @@ import SnapKit
 
 
 final class LoginView: UIView {
-
+    
+//    private var manager: LoginIteratorProtocol?
+//    
+//    init(manager: LoginIteratorProtocol) {
+//        self.manager = manager
+//    }
+    
     
     
     override init(frame: CGRect) {
@@ -53,7 +59,7 @@ final class LoginView: UIView {
     
     private(set) lazy var loginButton: UIButton = {
         let button = UIButton()
-//        button.addTarget(self, action: #selector(), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(manager?.singUp), for: .touchUpInside)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(red: 0.23, green: 0.3, blue: 0.8, alpha: 0.8)
         button.layer.cornerRadius = 16

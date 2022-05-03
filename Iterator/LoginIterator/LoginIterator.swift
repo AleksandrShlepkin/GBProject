@@ -10,49 +10,41 @@ import UIKit
 
 
 final class LoginIterator: LoginIteratorProtocol {
-    func singUp() {
-        
-    }
-    
 
     
 
     weak var loginVC: LoginViewController?
     
-//    private var loginView: LoginView?
-    private let realm: SaveRealm
+    private var loginView: LoginView?
+    private let realm: SaveRealm?
     var realmModel = LoginModel()
     
-    init(realm: SaveRealm) {
+    init(loginVC: LoginViewController, loginView: LoginView, realm: SaveRealm) {
+        self.loginVC = loginVC
+        self.loginView = loginView
         self.realm = realm
     }
     
-//    init(loginVC: LoginViewController, loginView: LoginView, realm: SaveRealm) {
-//        self.loginVC = loginVC
-//        self.loginView = loginView
-//        self.realm = realm
-//    }
+    func singUp() {
+        guard let login: String = loginView?.loginTextField.text,
+              let password: String = loginView?.passwordTextField.text else {
+                 return showAlert(title: "Error", text: "error")
+              }
+        self.realmModel.login = login
+        self.realmModel.password = password
+        realm?.save(login: realmModel, password: realmModel)
+
+    }
     
-//    func singUp() {
-//        guard let login: String = loginView?.loginTextField.text,
-//              let password: String = loginView?.passwordTextField.text else {
-//                 return showAlert(title: "Error", text: "error")
+//    func singUpTwo(login: String?, password: String?) {
+//        guard let login = login,
+//              let password = password else {
+//                  return showAlert(title: "Error", text: "error")
 //              }
 //        self.realmModel.login = login
 //        self.realmModel.password = password
 //        realm.save(login: realmModel, password: realmModel)
-//
 //    }
-    
-    func singUpTwo(login: String?, password: String?) {
-        guard let login = login,
-              let password = password else {
-                  return showAlert(title: "Error", text: "error")
-              }
-        self.realmModel.login = login
-        self.realmModel.password = password
-        realm.save(login: realmModel, password: realmModel)
-    }
     
 
     
