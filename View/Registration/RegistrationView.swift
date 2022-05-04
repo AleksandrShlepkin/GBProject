@@ -105,7 +105,7 @@ final class RegistrationView: UIView {
         }
         
         passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(loginTextField).inset(50)
+            make.top.equalTo(secondNameTextField).inset(50)
             make.left.equalToSuperview().inset(30)
             make.right.equalToSuperview().inset(30)
             make.height.greaterThanOrEqualTo(40)

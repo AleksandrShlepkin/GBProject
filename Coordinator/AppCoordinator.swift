@@ -14,20 +14,29 @@ class AppCoordinator: Coordinator {
     var navigation: UINavigationController
     
     
-    init(navigation: UINavigationController, parentCoordinator: Coordinator) {
+    init(navigation: UINavigationController) {
         self.navigation = navigation
-        self.parentCoordinator = parentCoordinator
+        
     }
     
     func start() {
-        goToRegister()
+        goToLogin()
+    }
+    
+    
+    func goToLogin() {
+        let vc = LoginViewController()
+        let loginView = LoginView()
+        loginView.coordinator = self
+        vc.loginView = loginView
+        navigation.pushViewController(vc, animated: true)
     }
     
     func goToRegister() {
         let vc = RegisterViewControlle()
-        let loginView = RegistrationView()
-        loginView.coordinator = self
-        vc.registerView = loginView
+        let registerView = RegistrationView()
+        registerView.coordinator = self
+        vc.registerView = registerView
         navigation.pushViewController(vc, animated: true)
         
         

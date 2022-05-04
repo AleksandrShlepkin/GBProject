@@ -16,8 +16,10 @@ class RegisterViewControlle: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
     }
     
     override func loadView() {
+        self.view = registerView
     }
 }
