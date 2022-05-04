@@ -10,5 +10,4 @@ import Foundation
 
 protocol LoginIteratorProtocol {
     func singUp()
-    func singUpTwo(login: String?, password: String?)
 }
