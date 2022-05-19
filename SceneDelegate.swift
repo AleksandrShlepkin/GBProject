@@ -10,17 +10,20 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var appCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowsScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowsScene)
-        let vc = LoginViewController()
-        let navVC = UINavigationController(rootViewController: vc)
-        window.rootViewController = navVC
-        self.window = window
-        window.makeKeyAndVisible()
+        let appWindows = UIWindow(frame: UIScreen.main.bounds)
+        appWindows.windowScene = windowsScene
+        let navigation = UINavigationController()
+        appCoordinator = AppCoordinator(navigation: navigation)
+        appCoordinator?.start()
+        appWindows.rootViewController = navigation
+        appWindows.makeKeyAndVisible()
+        window = appWindows
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -33,22 +36,32 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        self.window?.viewWithTag(221122)?.removeFromSuperview()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = window!.frame
+        blurEffectView.tag = 221122
+
+        self.window?.addSubview(blurEffectView)
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        self.window?.viewWithTag(221122)?.removeFromSuperview()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+
     }
 
 

@@ -13,5 +13,7 @@ final class LoginModel: Object {
     
     @objc dynamic var login: String?
     @objc dynamic var password: String?
+    @objc dynamic var name: String?
+    @objc dynamic var secondName: String?
     
 }

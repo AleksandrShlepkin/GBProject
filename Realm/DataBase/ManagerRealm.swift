@@ -10,8 +10,16 @@ import RealmSwift
 
 
 final class ManagerRealm: SaveRealm {
+
     
     fileprivate lazy var mainRealm = try! Realm(configuration: .defaultConfiguration, queue: .global())
+    
+    
+    func saveRegister(arrayUser: [LoginModel]) {
+        try! mainRealm.write({
+            mainRealm.add(arrayUser)
+        })
+    }
     
     
     func save(login: LoginModel, password: LoginModel) {

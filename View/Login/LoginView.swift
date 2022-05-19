@@ -11,7 +11,19 @@ import SnapKit
 
 
 final class LoginView: UIView {
+    
+    weak var coordinator: AppCoordinator?
 
+    
+
+    @objc private func checkUser() {
+        
+        
+    }
+    
+    @objc private func goToRegister() {
+        coordinator?.goToRegister()
+    }
     
     
     override init(frame: CGRect) {
@@ -34,7 +46,7 @@ final class LoginView: UIView {
     }()
     
     private(set) lazy var loginTextField: UITextField = {
-       let login = UITextField()
+        let login = UITextField()
         login.font = UIFont.boldSystemFont(ofSize: 20)
         login.backgroundColor = .systemGray6
         login.layer.cornerRadius = 5
@@ -42,7 +54,7 @@ final class LoginView: UIView {
         return login
     }()
     private(set) lazy var passwordTextField: UITextField = {
-       let password = UITextField()
+        let password = UITextField()
         password.font = UIFont.boldSystemFont(ofSize: 20)
         password.backgroundColor = .systemGray6
         password.isSecureTextEntry = true
@@ -53,7 +65,7 @@ final class LoginView: UIView {
     
     private(set) lazy var loginButton: UIButton = {
         let button = UIButton()
-//        button.addTarget(self, action: #selector(), for: .touchUpInside)
+        button.addTarget(self, action: #selector(checkUser), for: .touchUpInside)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(red: 0.23, green: 0.3, blue: 0.8, alpha: 0.8)
         button.layer.cornerRadius = 16
@@ -64,6 +76,7 @@ final class LoginView: UIView {
     private(set) lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle("Registration", for: .normal)
+        button.addTarget(self, action: #selector(goToRegister), for: .touchUpInside)
         button.backgroundColor = UIColor(red: 0.23, green: 0.3, blue: 0.8, alpha: 0.6)
         button.layer.cornerRadius = 16
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +120,7 @@ final class LoginView: UIView {
             make.left.equalToSuperview().inset(30)
             make.right.equalToSuperview().inset(30)
             make.height.greaterThanOrEqualTo(40)
-
+            
         }
         
         loginButton.snp.makeConstraints { make in
