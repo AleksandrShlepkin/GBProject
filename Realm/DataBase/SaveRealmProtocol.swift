@@ -11,5 +11,5 @@ import RealmSwift
 protocol SaveRealm {
     func save(login: LoginModel, password: LoginModel)
     func getObject() -> [LoginModel] 
-   
+    func saveRegister(arrayUser: [LoginModel]) 
 }

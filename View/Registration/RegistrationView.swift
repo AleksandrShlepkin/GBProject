@@ -12,7 +12,12 @@ import SnapKit
 final class RegistrationView: UIView {
     
     weak var coordinator: AppCoordinator?
+ 
+    let funcClass = FuncClass()
     
+    @objc private func registerUser() {
+        self.funcClass.registerUser()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,6 +70,7 @@ final class RegistrationView: UIView {
     private(set) lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle("Registration", for: .normal)
+        button.addTarget(self, action: #selector(registerUser), for: .touchUpInside)
         button.backgroundColor = UIColor(red: 0.23, green: 0.3, blue: 0.8, alpha: 0.6)
         button.layer.cornerRadius = 16
         button.translatesAutoresizingMaskIntoConstraints = false

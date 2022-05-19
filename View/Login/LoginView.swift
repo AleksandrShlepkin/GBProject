@@ -13,14 +13,12 @@ import SnapKit
 final class LoginView: UIView {
     
     weak var coordinator: AppCoordinator?
-    var loginIterator: LoginIterator?
+
     
-    @objc private func singUP() {
-        loginIterator?.singUp()
-    }
-    
-    func goTologin() {
-        coordinator?.goToLogin()
+
+    @objc private func checkUser() {
+        
+        
     }
     
     @objc private func goToRegister() {
@@ -67,7 +65,7 @@ final class LoginView: UIView {
     
     private(set) lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(singUP), for: .touchUpInside)
+        button.addTarget(self, action: #selector(checkUser), for: .touchUpInside)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(red: 0.23, green: 0.3, blue: 0.8, alpha: 0.8)
         button.layer.cornerRadius = 16
